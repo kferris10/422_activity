@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Comparing Multiple Regression Models</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link  rel="stylesheet" 
+    href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+  <link rel="stylesheet" href="libraries/frameworks/bootstrap3/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="libraries/frameworks/bootstrap3/css/main.css">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/github.css" />
+  <script src="libraries/frameworks/bootstrap3/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/frameworks/bootstrap3/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+    <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="libraries/frameworks/bootstrap3/css/custom.css"></link>
+<link rel=stylesheet href="libraries/frameworks/bootstrap3/css/moving_sidebar.css"></link>
+<link rel=stylesheet href="http://fonts.googleapis.com/css?family=Vollkorn"></link>
+<link rel=stylesheet href="http://fonts.googleapis.com/css?family=Droid%20Sans%20Mono"></link>
+
+  <script src="libraries/frameworks/bootstrap3/js/jquery.js"></script>
+  
+</head>
+<body data-spy = "scroll" data-target = ".page-sidebar">
+   <!--[if lt IE 7]>
+     <p class="chromeframe">You are using an outdated browser. 
+       <a href="http://browsehappy.com/">Upgrade your browser today</a> or 
+       <a href="http://www.google.com/chromeframe/?redirect=true"> 
+         install Google Chrome Frame
+       </a> to better experience this site.
+    </p>
+   <![endif]-->
+
+  <a href=https://github.com/kferris10/Ch7-Comparing-Regression-Models><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+  <div class = "row">
+
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <h1>Comparing Multiple Regression Models</h1>
+        <h3>Ch 7 Multiple Linear Regression</h3>
+        <h3>Stat 217</h3>
+        <h3>Monday, April 20</h3>
+      </div>
+    </div>
+        
+    <div class = "row">
+    
+<!--
+SIDEBAR-NAV
+-->
+      <div class = "col-md-3 pull-right hidden-sm hidden-xs hidden-print page-sidebar affix-top">   
+        <div class="container-fluid">
+  			  <nav class = "sidebar-nav">
+					  <ul class = "nav affix" data-spy="affix" data-offset-top="300" data-offset-bottom="20" role = "navigation">
+              
+              <li><a href = "#slide-1"> Introduction</a></li>
+
+              <li><a href = "#slide-2"> Likelihood Under the Null</a></li>
+
+              <li><a href = "#slide-3"> Likelihood Under the Alternative</a></li>
+
+              <li><a href = "#slide-4"> Likelihood Ratio Test</a></li>
+
+              <li><a href = "#slide-5"> LRT Distribution</a></li>
+
+              <li><a href = "#slide-6"> LRT Distribution (Part 2)</a></li>
+
+              <li><a href = "#slide-7"> Part (b) Null Hypothesis</a></li>
+
+              <li><a href = "#slide-8"> The test statistic</a></li>
+
+              <li><a href = "#slide-9"> Obtaining a p-value</a></li>
+					  </ul>
+				  </nav>
+        </div>
+      </div>  <!-- end sidebar -->
+
+<!--
+PAGE CONTENT
+-->
+      <div class = "col-md-9 col-sm-12 push-left">
+        <div class = "container-fluid">
+          <div class="section" id="slide-1">
+    <div class="page-header">
+      <h2>Introduction</h2>
+    <hr>
+    </div>
+  <p>This is designed to help with problem 2 of Homework 8.  I&#39;m assuming that they know that the MLE of a Gamma distribution is \(\hat{\beta} = \frac{\bar{x}}{\alpha}\).</p>
+
+<p>Also, I&#39;d do part (a) by finding the ratio of the likelihood under the null to the likelihood for all \(\beta\)</p>
+
+<p>\( \lambda (x) = \frac{sup(\beta = \beta_0) L(\beta | \textbf{x}, \alpha)}{sup(all \, \beta) L(\beta | \textbf{x}, \alpha)} \)</p>
+
+</div>
+<div class="section" id="slide-2">
+    <div class="page-header">
+      <h2>Likelihood Under the Null</h2>
+    <hr>
+    </div>
+  
+<div class="quiz quiz-single well ">
+  <p>What is the likelihood under the null hypothesis?</p>
+
+<ol>
+<li>\( \frac{1}{\Gamma(\alpha)^n \beta_0^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)</li>
+<li>\( \frac{1}{\Gamma(\alpha)^n \beta_0^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \beta_0) \)</li>
+<li>\( \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Recall that there is only one possible value of \(\beta\) under the null.</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>Under the null, you just plug in \(\beta_0\) for \(\beta\) in the likelihood.</p>
+
+</div>
+</div>
+</div>
+<div class="section" id="slide-3">
+    <div class="page-header">
+      <h2>Likelihood Under the Alternative</h2>
+    <hr>
+    </div>
+  
+<p>What is the likelihood under the alternative</p>
+
+
+<textarea rows="" style="width:95%" class='submitCompare'
+  placeholder='Type your answer (at least 140 characters)'>
+</textarea>
+<a class='btn btn-success submitCompare'>
+  Submit and Compare
+</a>
+<a class='btn btn-danger clearSubmitCompare'>Clear</a>
+
+<div class='explanation' style='display: none;'>
+  <p>Here, we just plug in \(\hat{\beta}\) for \(\beta\) in the likelihood.  So...</p>
+
+<p>\(sup(all \, \beta) L(\beta | \textbf{x}, \alpha) =  \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)</p>
+
+</div>
+</div>
+<div class="section" id="slide-4">
+    <div class="page-header">
+      <h2>Likelihood Ratio Test</h2>
+    <hr>
+    </div>
+  <p>Find the ratio of these two, showing that it is equal to </p>
+
+<p>\( (\frac{\hat{\beta}}{\beta_0})^{n\alpha} \times exp(-\sum_{i=1}^{n} (\frac{1}{\beta_0} - \frac{1}{\hat{\beta}})) \)</p>
+
+</div>
+<div class="section" id="slide-5">
+    <div class="page-header">
+      <h2>LRT Distribution</h2>
+    <hr>
+    </div>
+  
+<div class="quiz quiz-single well ">
+  <p>For a large sample, what distribution does this test statistic follow?</p>
+
+<ol>
+<li>Normal</li>
+<li><em>Chi-Squared</em></li>
+<li>t</li>
+<li>F</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>What happens to LRTs as \(n \rightarrow \inf\)?</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>See Theorem (whatever Theorem it is)</p>
+
+</div>
+</div>
+</div>
+<div class="section" id="slide-6">
+    <div class="page-header">
+      <h2>LRT Distribution (Part 2)</h2>
+    <hr>
+    </div>
+  
+<div class="quiz-text quiz-multitext well">
+  <ol>
+<li>What degrees of freedom does this distribution have?</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>How many constraints are there in your hypotheses?</p>
+
+</div>
+<div class="quiz-explanation">
+  <ol>
+<li><span class = "answer">1</span>
+There is one additional constraint in the null.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="section" id="slide-7">
+    <div class="page-header">
+      <h2>Part (b) Null Hypothesis</h2>
+    <hr>
+    </div>
+  
+<div class="quiz quiz-single well ">
+  <p>What is the null hypothesis?</p>
+
+<ol>
+<li>\(\beta = 5\)</li>
+<li>\(\alpha = 5\)</li>
+<li>\(\beta = 44\)</li>
+<li><em>\(\beta = 12.2\)</em></li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Um...</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>They assumed that \(\beta = 12.2\) </p>
+
+</div>
+</div>
+</div>
+<div class="section" id="slide-8">
+    <div class="page-header">
+      <h2>The test statistic</h2>
+    <hr>
+    </div>
+  
+<div class="quiz-text quiz-multitext well">
+  <p>Round both to one decimal place.</p>
+
+<ol>
+<li>What is \(\hat{\beta}\)?</li>
+<li>What is the value of \(\lambda (x)\)</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>For \(n = 1\), \(\bar{x}\) is just the one observation.</p>
+
+</div>
+<div class="quiz-explanation">
+  <ol>
+<li><span class = "answer">8.8</span>
+\(\hat{\beta} = 44.4 / \alpha\)</li>
+<li><span class = "answer">0.2</span>
+Plug in \(\hat{\beta}\), \(\beta_0\), and \(\alpha\) in the LRT from before.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="section" id="slide-9">
+    <div class="page-header">
+      <h2>Obtaining a p-value</h2>
+    <hr>
+    </div>
+  
+<p>A $\chi<sup>2(1)</sup> distribution is plotted below.  Explain how you would find a p-value.</p>
+
+<pre><code class="r">library(ggplot2)
+qplot(rchisq(10000, 1), geom = &quot;density&quot;, colour = I(&quot;green&quot;), fill = I(&quot;grey&quot;), alpha = I(.5)) + 
+  theme_bw() + 
+  labs(x = &quot;Test Statistic&quot;)
+</code></pre>
+
+<p><img src="assets/fig/chisq1-1.png" title="plot of chunk chisq1" alt="plot of chunk chisq1" style="display: block; margin: auto;" /></p>
+
+
+<textarea rows="" style="width:95%" class='submitCompare'
+  placeholder='Type your answer (at least 140 characters)'>
+</textarea>
+<a class='btn btn-success submitCompare'>
+  Submit and Compare
+</a>
+<a class='btn btn-danger clearSubmitCompare'>Clear</a>
+
+<div class='explanation' style='display: none;'>
+  <p>Find the probability of observing a value of the \(chi^2(1)\) distribution greater than 0.202.</p>
+
+</div>
+</div>
+        </div>
+      </div>  <!-- end content -->
+      
+    </div>  <!-- end content row -->
+
+   
+    <!-- Footer -->
+    <footer id="top" role="footer">
+      <div class="container-fluid">
+        <span class="text-muted">Built by <a href="http://slidify.org/">Slidify</a>.  Styled using <a href="http://getbootstrap.com/">Bootstrap</a>.  Hosted on <a href="https://github.com/">GitHub</a>.</span>
+      </div>
+    </footer>
+
+  </div>    <!-- end main row -->
+</body>
+  <script src="libraries/frameworks/bootstrap3/js/bootstrap.min.js"></script>
+  <script src="libraries/frameworks/bootstrap3/js/plugins.js"></script>
+  <script src="libraries/frameworks/bootstrap3/js/main.js"></script>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>   
+  </html>
