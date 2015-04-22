@@ -17,7 +17,7 @@ assets      :
     - "http://fonts.googleapis.com/css?family=Vollkorn"
     - "http://fonts.googleapis.com/css?family=Droid%20Sans%20Mono"
 github:
-  website: "https://github.com/kferris10/Ch7-Comparing-Regression-Models"
+  website: "https://github.com/kferris10/422_activity"
 ---
 
 
@@ -36,8 +36,8 @@ Also, I'd do part (a) by finding the ratio of the likelihood under the null to t
 What is the likelihood under the null hypothesis?
 
 1. \( \frac{1}{\Gamma(\alpha)^n \beta_0^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)
-2. \( \frac{1}{\Gamma(\alpha)^n \beta_0^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \beta_0) \)
-3. \( \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)
+2. \( \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)
+3. \( \frac{1}{\Gamma(\alpha)^n \beta_0^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \beta_0) \)
 
 *** .hint
 Recall that there is only one possible value of $\beta$ under the null.
@@ -126,12 +126,12 @@ Plug in $\hat{\beta}$, $\beta_0$, and $\alpha$ in the LRT from before.
 --- &submitcompare1
 # Obtaining a p-value
 
-A $\chi^2(1) distribution is plotted below.  Explain how you would find a p-value.
+A $\chi^2(1)$ distribution is plotted below.  Explain how you would find a p-value.
 
 
 ```r
 library(ggplot2)
-qplot(rchisq(10000, 1), geom = "density", colour = I("green"), fill = I("grey"), alpha = I(.5)) + 
+qplot(rchisq(10000, 1), geom = "density", colour = I("darkgreen"), fill = I("grey"), alpha = I(.5)) + 
   theme_bw() + 
   labs(x = "Test Statistic")
 ```
