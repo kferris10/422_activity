@@ -65,23 +65,27 @@ SIDEBAR-NAV
               
               <li><a href = "#slide-1"> Introduction</a></li>
 
-              <li><a href = "#slide-2"> Likelihood Under the Null</a></li>
+              <li><a href = "#slide-2"> Part (a)</a></li>
 
-              <li><a href = "#slide-3"> Maximized Likelihood Under the Alternative</a></li>
+              <li><a href = "#slide-3"> Likelihood Under the Null</a></li>
 
-              <li><a href = "#slide-4"> Likelihood Ratio Test</a></li>
+              <li><a href = "#slide-4"> Maximized Likelihood Under the Alternative</a></li>
 
-              <li><a href = "#slide-5"> Large Sample Results</a></li>
+              <li><a href = "#slide-5"> Likelihood Ratio Test</a></li>
 
-              <li><a href = "#slide-6"> LRT Distribution</a></li>
+              <li><a href = "#slide-6"> Large Sample Results</a></li>
 
-              <li><a href = "#slide-7"> LRT Distribution for Part (b)</a></li>
+              <li><a href = "#slide-7"> LRT Distribution</a></li>
 
-              <li><a href = "#slide-8"> Part (b) Null Hypothesis</a></li>
+              <li><a href = "#slide-8"> LRT Distribution for Part (b)</a></li>
 
-              <li><a href = "#slide-9"> The test statistic</a></li>
+              <li><a href = "#slide-9"> Part (b) Null Hypothesis</a></li>
 
-              <li><a href = "#slide-10"> Obtaining a p-value</a></li>
+              <li><a href = "#slide-10"> The test statistic</a></li>
+
+              <li><a href = "#slide-11"> Obtaining a p-value</a></li>
+
+              <li><a href = "#slide-12"> Making a Decision</a></li>
 					  </ul>
 				  </nav>
         </div>
@@ -97,10 +101,18 @@ PAGE CONTENT
       <h2>Introduction</h2>
     <hr>
     </div>
-  <p>This is designed to help with problem 2 of Homework 8.  To start, you&#39;ll need to know that the MLE of a Gamma distribution is \(\hat{\beta} = \frac{\bar{X}}{\alpha}\) (you&#39;ll have to show this when you write up the homework).</p>
+  <p>This is designed to help with problem 2 of Homework 8.  I&#39;m assuming you know that the MLE of a Gamma distribution is \(\hat{\beta} = \frac{\bar{X}}{\alpha}\).</p>
 
 </div>
 <div class="section" id="slide-2">
+    <div class="page-header">
+      <h2>Part (a)</h2>
+    <hr>
+    </div>
+  <p>We&#39;ll start by deriving the LRT for the second parameter of the Gamma distribution when \(\alpha\) is known.</p>
+
+</div>
+<div class="section" id="slide-3">
     <div class="page-header">
       <h2>Likelihood Under the Null</h2>
     <hr>
@@ -130,17 +142,17 @@ PAGE CONTENT
 </div>
 </div>
 </div>
-<div class="section" id="slide-3">
+<div class="section" id="slide-4">
     <div class="page-header">
       <h2>Maximized Likelihood Under the Alternative</h2>
     <hr>
     </div>
   
-<p>What is the likelihood under the alternative</p>
+<p>What is the likelihood under the alternative?  Do your work on scratch paper, then compare it using the submit button.  </p>
 
 
 <textarea rows="" style="width:95%" class='submitCompare'
-  placeholder='Type your answer (at least 140 characters)'>
+  placeholder='Type your answer (at least 50 characters)'>
 </textarea>
 <a class='btn btn-success submitCompare'>
   Submit and Compare
@@ -150,11 +162,11 @@ PAGE CONTENT
 <div class='explanation' style='display: none;'>
   <p>Here, we just plug in \(\hat{\beta}\) for \(\beta\) in the likelihood.  So...</p>
 
-<p>\(sup(all \, \beta) L(\beta | \textbf{x}, \alpha) =  \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(\sum_{i = 1}^{n} x_i / \hat{\beta}) \)</p>
+<p>\(sup(all \, \beta) L(\beta | \textbf{x}, \alpha) =  \frac{1}{\Gamma(\alpha)^n \hat{\beta}^{n\alpha}} \prod_{i = 1}^{n} x_i^{\alpha-1} exp(- \sum_{i = 1}^{n} x_i / \hat{\beta}) \)</p>
 
 </div>
 </div>
-<div class="section" id="slide-4">
+<div class="section" id="slide-5">
     <div class="page-header">
       <h2>Likelihood Ratio Test</h2>
     <hr>
@@ -166,7 +178,7 @@ PAGE CONTENT
 <p>This will be our test statistic.</p>
 
 </div>
-<div class="section" id="slide-5">
+<div class="section" id="slide-6">
     <div class="page-header">
       <h2>Large Sample Results</h2>
     <hr>
@@ -176,7 +188,7 @@ PAGE CONTENT
 
 
 <textarea rows="" style="width:95%" class='submitCompare'
-  placeholder='Type your answer (at least 140 characters)'>
+  placeholder='Type your answer (at least 50 characters)'>
 </textarea>
 <a class='btn btn-success submitCompare'>
   Submit and Compare
@@ -184,11 +196,11 @@ PAGE CONTENT
 <a class='btn btn-danger clearSubmitCompare'>Clear</a>
 
 <div class='explanation' style='display: none;'>
-  <p>Multiply the natural log of the test statistic by -2.</p>
+  <p>Multiply the natural log of \(\lambda(x)\) by -2.</p>
 
 </div>
 </div>
-<div class="section" id="slide-6">
+<div class="section" id="slide-7">
     <div class="page-header">
       <h2>LRT Distribution</h2>
     <hr>
@@ -219,7 +231,7 @@ PAGE CONTENT
 </div>
 </div>
 </div>
-<div class="section" id="slide-7">
+<div class="section" id="slide-8">
     <div class="page-header">
       <h2>LRT Distribution for Part (b)</h2>
     <hr>
@@ -236,7 +248,7 @@ PAGE CONTENT
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p>How many constraints are there in your hypotheses?</p>
+  <p>What is the difference in the number of free parameters?</p>
 
 </div>
 <div class="quiz-explanation">
@@ -248,7 +260,7 @@ There is one additional constraint in the null.</li>
 </div>
 </div>
 </div>
-<div class="section" id="slide-8">
+<div class="section" id="slide-9">
     <div class="page-header">
       <h2>Part (b) Null Hypothesis</h2>
     <hr>
@@ -279,7 +291,7 @@ There is one additional constraint in the null.</li>
 </div>
 </div>
 </div>
-<div class="section" id="slide-9">
+<div class="section" id="slide-10">
     <div class="page-header">
       <h2>The test statistic</h2>
     <hr>
@@ -287,10 +299,10 @@ There is one additional constraint in the null.</li>
   
 <div class="quiz-text quiz-multitext well">
   <ol>
-<li>What is \(\bar{X}\)?</li>
-<li>What is \(\hat{\beta}\)?</li>
-<li>What is the value of \(\lambda (X)\)?  Round to four decimal places</li>
-<li>What is the value of the test statistic (i.e. \(-2 * log(\lambda (X))\))?  Round to two decimal places.</li>
+<li>What is the observed value of \(\bar{X}\)?</li>
+<li>What is the observed value of \(\hat{\beta}\)?</li>
+<li>What is the observed value of  \(\lambda (X)\)?  Round to four decimal places</li>
+<li>What is the observed value of  the test statistic (i.e. \(-2 * log(\lambda (X))\))?  Round to two decimal places.</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -317,7 +329,7 @@ Plug in \(\hat{\beta}\), \(\beta_0\), and \(\alpha\) into the formula for \(\lam
 </div>
 </div>
 </div>
-<div class="section" id="slide-10">
+<div class="section" id="slide-11">
     <div class="page-header">
       <h2>Obtaining a p-value</h2>
     <hr>
@@ -338,7 +350,7 @@ qplot(x = test_stats, ymax = densities, ymin = 0, geom = &quot;ribbon&quot;) +
 
 
 <textarea rows="" style="width:95%" class='submitCompare'
-  placeholder='Type your answer (at least 140 characters)'>
+  placeholder='Type your answer (at least 50 characters)'>
 </textarea>
 <a class='btn btn-success submitCompare'>
   Submit and Compare
@@ -346,7 +358,29 @@ qplot(x = test_stats, ymax = densities, ymin = 0, geom = &quot;ribbon&quot;) +
 <a class='btn btn-danger clearSubmitCompare'>Clear</a>
 
 <div class='explanation' style='display: none;'>
-  <p>Find the probability of observing a value of the \(chi^2(1)\) distribution greater than 0.202 (our observed test statistic).</p>
+  <p>Find the area under the curve in the \(chi^2(1)\) distribution greater than 8.64 (our observed test statistic).</p>
+
+</div>
+</div>
+<div class="section" id="slide-12">
+    <div class="page-header">
+      <h2>Making a Decision</h2>
+    <hr>
+    </div>
+  
+<p>The p-value is 0.0033. Based on this p-value and the given significance level, write a conclusion for this test.</p>
+
+
+<textarea rows="" style="width:95%" class='submitCompare'
+  placeholder='Type your answer (at least 50 characters)'>
+</textarea>
+<a class='btn btn-success submitCompare'>
+  Submit and Compare
+</a>
+<a class='btn btn-danger clearSubmitCompare'>Clear</a>
+
+<div class='explanation' style='display: none;'>
+  <p>The p-value 0.0033 indicates that there is very strong evidence against the null hypothesis. There is evidence to suggest that the Beta parameter for modeling July rainfall (in mm) is no longer 12.2.</p>
 
 </div>
 </div>
