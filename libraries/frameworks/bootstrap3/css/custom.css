@@ -15,8 +15,12 @@ footer {
   margin: 15px;
 }
 .jumbotron {
-  background-color: #FFE573;
+  background: url(http://angelcoilbartlett.com/wp-content/themes/theFirm/images/bozeman-mountains.jpg);
   text-align: center;
+  background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 0px;
+    text-shadow: 3px 3px 3px #ccc;
 }
 .page-header {
   border-bottom: 0px;
@@ -48,10 +52,11 @@ li {
 a {
   color: #4575D4;
 }
-.jumbotron h1, 
-.jumbotron h2, 
-.jumbotron h3 {
+.jumbotron h1 {
   color: #05296E;
+}
+.jumbotron h2, h3 {
+  color: darkred;
 }
 
 hr {

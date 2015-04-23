@@ -2,7 +2,7 @@
 title       : Homework 8
 subtitle    : Problem 2
 author      : Stat 422
-today       : "Monday, April 20"
+today       : "Thursday, April 23"
 framework   : bootstrap3
 highlighter : highlight.js 
 hitheme     : github      
